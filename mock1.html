@@ -28,6 +28,7 @@
       -moz-osx-font-smoothing: grayscale;
       padding: 0;
     }
+    /* Navigation Bar */
     .navbar {
       background: rgba(255,255,255,0.85);
       backdrop-filter: blur(8px);
@@ -268,18 +269,117 @@
         </div>
       </header>
 
-      <!-- Smaller Logo Image -->
+      <!-- Small logo image -->
       <img src="https://www2.igchkshop.dpdns.org/img/igchkexam.jpg" alt="IGC HK Exam Logo" class="header-image">
 
-      <!-- Instructions -->
       <section class="instructions">
         <h2>Instructions</h2>
         <p>This is IGC HK Exam - WJEC past paper bank, questions are related to school mock exams and are likely to come up in exams. There are three main documents for each subject, Past Paper Bank, Questions You Must Do and QER. The past paper bank consist of 90-100 pages so please do it at your own place and please don't complete all of them. As the second document title shows, these Questions You Must Do are questions style you are very likely to encounter during exams, so please spend time doing these. Lastly is the QER predictions, these are just sample QER. If you have any questions or concerns with copyright issues, please email wjec@igchkshop.dpdns.org for enquires or visit www.igchkshop.dpdns.org for further reference. Good luck with revision and may the force be with you!</p>
       </section>
 
-      <!-- Subjects Grid -->
-      <!-- (same as before — Physics, Chemistry, Biology cards unchanged) -->
-      <!-- ... [KEEP SAME SUBJECTS AND LINKS FROM PREVIOUS CODE] ... -->
+      <section class="grid" aria-label="Subject resources">
+        <!-- Physics -->
+        <article class="subject-card">
+          <div class="subject-header">
+            <div class="subject-icon physics-icon">P</div>
+            <h2 class="subject-title">Physics</h2>
+          </div>
+          <div class="resource-list">
+            <div class="resource-item">
+              <div class="resource-name">Past Paper Bank</div>
+              <div class="resource-desc">Comprehensive collection of past papers (90-100 pages)</div>
+              <div class="links physics-links">
+                <a href="https://ccoex.igchkshop.dpdns.org/file/phy_m1.pdf" target="_blank">Open PDF</a>
+              </div>
+            </div>
+            <div class="resource-item">
+              <div class="resource-name">Questions You Must Do</div>
+              <div class="resource-desc">Essential questions likely to appear in exams</div>
+              <div class="links physics-links">
+                <a href="https://ccoex.igchkshop.dpdns.org/file/phy_qymd.pdf" target="_blank">Open PDF</a>
+              </div>
+            </div>
+            <div class="resource-item">
+              <div class="resource-name">QER Predictions</div>
+              <div class="resource-desc">Sample QER predictions for Physics</div>
+              <div class="links physics-links">
+                <a href="https://www2.igchkshop.dpdns.org/mock1/Predicted%20QER%20Physics.pdf" target="_blank">Open PDF</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Chemistry -->
+        <article class="subject-card">
+          <div class="subject-header">
+            <div class="subject-icon chemistry-icon">C</div>
+            <h2 class="subject-title">Chemistry</h2>
+          </div>
+          <div class="resource-list">
+            <div class="resource-item">
+              <div class="resource-name">Past Paper Bank</div>
+              <div class="resource-desc">Comprehensive collection of past papers (90-100 pages)</div>
+              <div class="links chemistry-links">
+                <a href="https://ccoex.igchkshop.dpdns.org/file/chem_m1.pdf" target="_blank">Open PDF</a>
+              </div>
+            </div>
+            <div class="resource-item">
+              <div class="resource-name">Questions You Must Do</div>
+              <div class="resource-desc">Essential questions likely to appear in exams</div>
+              <div class="links chemistry-links">
+                <a href="https://ccoex.igchkshop.dpdns.org/file/chem_qymd.pdf" target="_blank">Open PDF</a>
+              </div>
+            </div>
+            <div class="revision-section">
+              <div class="revision-title">Revision Notes</div>
+              <div class="links chemistry-links">
+                <a href="https://ccoex.igchkshop.dpdns.org/notes/chemistry/equationlist.html" target="_blank">Equation List</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Biology -->
+        <article class="subject-card">
+          <div class="subject-header">
+            <div class="subject-icon biology-icon">B</div>
+            <h2 class="subject-title">Biology</h2>
+          </div>
+          <div class="resource-list">
+            <div class="resource-item">
+              <div class="resource-name">Past Paper Bank</div>
+              <div class="resource-desc">Comprehensive collection of past papers (90-100 pages)</div>
+              <div class="links biology-links">
+                <a href="https://ccoex.igchkshop.dpdns.org/file/bio_m1.pdf" target="_blank">Open PDF</a>
+              </div>
+            </div>
+            <div class="resource-item">
+              <div class="resource-name">Questions You Must Do</div>
+              <div class="resource-desc">Essential questions likely to appear in exams</div>
+              <div class="links biology-links">
+                <a href="https://ccoex.igchkshop.dpdns.org/file/bio_qymd.pdf" target="_blank">Open PDF</a>
+              </div>
+            </div>
+            <div class="resource-item">
+              <div class="resource-name">QER Predictions</div>
+              <div class="resource-desc">Sample QER predictions for Biology</div>
+              <div class="links biology-links">
+                <a href="https://www2.igchkshop.dpdns.org/mock1/Predicted%20QER%20Biology.pdf" target="_blank">Open PDF</a>
+              </div>
+            </div>
+            <div class="revision-section">
+              <div class="revision-title">Revision Notes</div>
+              <div class="links biology-links">
+                <a href="https://ccoex.igchkshop.dpdns.org/notes/biology/3.1.html" target="_blank">3.1</a>
+                <a href="https://ccoex.igchkshop.dpdns.org/notes/biology/3.2.html" target="_blank">3.2</a>
+                <a href="https://ccoex.igchkshop.dpdns.org/notes/biology/3.4.html" target="_blank">3.4</a>
+                <a href="https://ccoex.igchkshop.dpdns.org/notes/biology/3.5.html" target="_blank">3.5</a>
+                <a href="https://ccoex.igchkshop.dpdns.org/notes/biology/3.6.html" target="_blank">3.6</a>
+              </div>
+            </div>
+          </div>
+        </article>
+      </section>
 
       <footer>
         <div class="small">Tip: Right-click links → "Open in new tab" (or tap on mobile).</div>
