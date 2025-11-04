@@ -3,31 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>IGC HK Exam - WJEC Past Paper Bank</title>
+  <title>IGC HK Exam - WJEC Mock 1 Complete</title>
   <style>
     :root {
+      --accent: #2196f3;
       --bg: #fff8f0;
       --card: #fff5e6;
       --muted: #666666;
-      --accent: #2196f3;
-      --physics: #ff5722;
-      --chemistry: #4caf50;
-      --biology: #9c27b0;
-      --radius: 12px;
+      --radius: 14px;
       font-family: Inter, Roboto, system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial;
     }
-    html, body {
-      height: 100%;
-      margin: 0;
-      padding: 0;
-    }
+
     body {
+      margin: 0;
       background: linear-gradient(180deg, #ffecd2 0%, #ffd8a8 100%);
-      color: #333333;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      padding: 0;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
+
     /* Navigation Bar */
     .navbar {
       background: rgba(255,255,255,0.85);
@@ -60,209 +55,97 @@
       font-size: 16px;
     }
 
-    /* Congratulations Banner */
+    /* Banner */
     .banner {
       background: linear-gradient(90deg, #4CAF50, #2196F3);
       color: white;
       text-align: center;
-      padding: 12px;
+      padding: 14px;
       font-size: 16px;
       font-weight: 600;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.3px;
       animation: fadeIn 1s ease-in-out;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
+
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(-10px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
+    /* Main content */
     .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 28px;
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      flex-direction: column;
+      padding: 40px 20px;
     }
-    .wrap {
+
+    .card {
+      background: var(--card);
+      padding: 40px;
+      border-radius: var(--radius);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      max-width: 600px;
       width: 100%;
-      background: linear-gradient(180deg, rgba(255,255,255,0.7), rgba(255,255,255,0.5));
-      border-radius: 16px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-      padding: 28px;
-      border: 1px solid rgba(255,255,255,0.5);
-      margin-bottom: 28px;
+      animation: fadeIn 1.2s ease;
     }
-    header {
-      display: flex;
-      gap: 16px;
-      align-items: center;
-      margin-bottom: 18px;
-    }
-    .logo {
-      width: 56px;
-      height: 56px;
-      border-radius: 10px;
-      background: linear-gradient(135deg, var(--accent), #7c4dff);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      color: white;
-      box-shadow: 0 6px 18px rgba(33,150,243,0.2);
-      flex: 0 0 56px;
-    }
-    h1 {
-      font-size: 20px;
-      margin: 0;
-      letter-spacing: 0.2px;
-      color: #333;
-    }
-    p.lead {
-      margin: 4px 0 0 0;
-      color: var(--muted);
-      font-size: 13px;
-    }
-    .header-image {
-      width: 100px;
-      height: auto;
-      border-radius: 10px;
-      margin: 10px 0 20px 0;
-      display: block;
-    }
-    .instructions {
-      background: var(--card);
-      border-radius: var(--radius);
-      padding: 18px;
-      margin-bottom: 28px;
-      border-left: 4px solid var(--accent);
-    }
-    .instructions h2 {
+
+    .card h1 {
       margin-top: 0;
-      font-size: 16px;
-      color: var(--accent);
-    }
-    .instructions p {
-      font-size: 14px;
-      line-height: 1.5;
-      color: #444;
-      margin: 0;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 20px;
-      margin-top: 18px;
-    }
-    .subject-card {
-      background: var(--card);
-      border-radius: var(--radius);
-      padding: 20px;
-      border: 1px solid rgba(0,0,0,0.05);
-      display: flex;
-      flex-direction: column;
-      min-height: 200px;
-    }
-    .subject-header {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 16px;
-    }
-    .subject-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      color: white;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    }
-    .physics-icon { background: linear-gradient(135deg, var(--physics), #ff8a65); }
-    .chemistry-icon { background: linear-gradient(135deg, var(--chemistry), #81c784); }
-    .biology-icon { background: linear-gradient(135deg, var(--biology), #ba68c8); }
-    .subject-title {
-      font-weight: 600;
-      font-size: 18px;
-      margin: 0;
+      font-size: 24px;
       color: #333;
     }
-    .resource-list {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-top: 10px;
-    }
-    .resource-item {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-    .resource-name {
-      font-weight: 600;
-      font-size: 14px;
-      color: #333;
-    }
-    .resource-desc {
-      font-size: 12px;
+
+    .card p {
       color: var(--muted);
-      margin-bottom: 4px;
-    }
-    .links {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-    .links a {
-      text-decoration: none;
-      background: linear-gradient(90deg, rgba(0,0,0,0.03), rgba(0,0,0,0.01));
-      padding: 8px 12px;
-      border-radius: 10px;
-      color: var(--accent);
-      border: 1px solid rgba(33,150,243,0.2);
-      font-weight: 600;
-      font-size: 12px;
-      transition: all 0.2s ease;
-    }
-    .links a:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 18px rgba(0,0,0,0.1);
-      background: linear-gradient(90deg, rgba(33,150,243,0.1), rgba(33,150,243,0.05));
-    }
-    .physics-links a:hover { color: var(--physics); border-color: rgba(255,87,34,0.3); }
-    .chemistry-links a:hover { color: var(--chemistry); border-color: rgba(76,175,80,0.3); }
-    .biology-links a:hover { color: var(--biology); border-color: rgba(156,39,176,0.3); }
-    .revision-section {
-      margin-top: 20px;
-      padding-top: 15px;
-      border-top: 1px dashed rgba(0,0,0,0.1);
-    }
-    .revision-title {
-      font-weight: 600;
       font-size: 15px;
-      color: #333;
-      margin-bottom: 10px;
+      margin: 15px 0 30px 0;
+      line-height: 1.6;
     }
+
+    /* Button */
+    .button {
+      display: inline-block;
+      background: var(--accent);
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 12px 22px;
+      border-radius: 10px;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 12px rgba(33,150,243,0.3);
+    }
+    .button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 18px rgba(33,150,243,0.4);
+    }
+
     footer {
-      margin-top: 28px;
+      text-align: center;
+      padding: 18px;
       color: var(--muted);
       font-size: 13px;
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      align-items: center;
+      background: rgba(255,255,255,0.8);
+      border-top: 1px solid rgba(0,0,0,0.05);
     }
-    .small { font-size: 12px; color: var(--muted); }
-    @media (max-width: 768px) {
-      .grid { grid-template-columns: 1fr; }
-      header { gap: 10px; }
-      .logo { width: 48px; height: 48px; }
-      footer { flex-direction: column; text-align: center; }
+
+    @media (max-width: 600px) {
+      .card {
+        padding: 30px 20px;
+      }
+      .card h1 {
+        font-size: 20px;
+      }
     }
   </style>
 </head>
 <body>
-  <!-- Global Navigation Bar -->
+
+  <!-- Navigation Bar -->
   <nav class="navbar">
     <a href="https://www.igchkshop.dpdns.org" class="nav-logo">
       <img src="https://www2.igchkshop.dpdns.org/img/igchkexam.jpg" alt="IGC HK Exam Logo">
@@ -275,23 +158,18 @@
     🎉 Congratulations! The exam is over. 🎉
   </div>
 
+  <!-- Main Content -->
   <div class="container">
-    <div class="wrap" role="main">
-      <header>
-        <div class="logo" aria-hidden="true">IGC</div>
-        <div>
-          <h1>IGC HK Exam - WJEC Past Paper Bank</h1>
-          <p class="lead">Access past papers, essential questions, and QER predictions for your exams</p>
-        </div>
-      </header>
-
-      <!-- Small logo image -->
-      <img src="https://www2.igchkshop.dpdns.org/img/igchkexam.jpg" alt="IGC HK Exam Logo" class="header-image">
-
-      <!-- Rest of your content remains unchanged -->
-      <!-- (Subjects, instructions, etc.) -->
-      <!-- ... -->
+    <div class="card">
+      <h1>Mock 1 is Over</h1>
+      <p>Thank you for your support throughout the exam period. The service has now terminated and will reopen when Mock 2 begins. We appreciate your hard work and dedication!</p>
+      <a href="https://ccoex.igchkshop.dpdns.org/mock1" class="button">Review Mock 1 Content</a>
     </div>
   </div>
+
+  <footer>
+    © 2025 IGC HK Exam — All rights reserved.
+  </footer>
+
 </body>
 </html>
