@@ -1,288 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>IGC HK Exam - Mock 2 Paper Bank</title>
-  <style>
-    :root {
-      --bg: #fff8f0;
-      --card: #fff5e6;
-      --muted: #666666;
-      --accent: #2196f3;
-      --physics: #ff5722;
-      --chemistry: #4caf50;
-      --biology: #9c27b0;
-      --maths: #0077cc;
-      --radius: 12px;
-      font-family: Inter, Roboto, system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IGC HK Exam Dashboard</title>
 
+<style>
     body {
-      margin: 0;
-      background: linear-gradient(180deg, #ffecd2 0%, #ffd8a8 100%);
-      color: #333;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        background: #fdf4e6;
+        padding: 20px;
     }
 
-    /* Navbar */
-    .navbar {
-      background: rgba(255,255,255,0.85);
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid rgba(0,0,0,0.05);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 28px;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-    }
-    .nav-logo img {
-      width: 36px;
-      height: 36px;
-      border-radius: 6px;
-    }
-    .nav-title {
-      font-weight: 600;
-      color: #333;
+    h1 {
+        text-align: center;
+        margin-bottom: 25px;
+        color: #333;
     }
 
-    /* Layout */
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 28px;
-    }
-    .wrap {
-      background: rgba(255,255,255,0.65);
-      padding: 28px;
-      border-radius: 16px;
-      border: 1px solid rgba(255,255,255,0.5);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    }
-
-    /* Header */
-    header {
-      display: flex;
-      gap: 16px;
-      align-items: center;
-    }
-    .logo {
-      width: 56px;
-      height: 56px;
-      background: linear-gradient(135deg, var(--accent), #7c4dff);
-      border-radius: 10px;
-      display: flex;
-      alignment: center;
-      justify-content: center;
-      font-weight: 700;
-      color: white;
-    }
-
-    /* Instructions */
-    .instructions {
-      background: var(--card);
-      border-left: 4px solid var(--accent);
-      padding: 18px;
-      margin: 20px 0;
-      border-radius: 12px;
-    }
-
-    /* Grid 4 Columns */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
-    }
-
-    /* Subject Cards */
     .subject-card {
-      background: var(--card);
-      padding: 20px;
-      border-radius: 12px;
-      border: 1px solid rgba(0,0,0,0.05);
+        background: #fff7ec;
+        margin: 20px 0;
+        padding: 20px;
+        border-radius: 16px;
+        border: 1px solid #f0e0c9;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.06);
     }
+
     .subject-header {
-      display: flex;
-      gap: 12px;
-      align-items: center;
-      margin-bottom: 16px;
+        display: flex;
+        align-items: center; /* ensures icon + title align */
+        gap: 14px;
+        margin-bottom: 16px;
     }
+
+    /* --- FIXED ICON ALIGNMENT --- */
     .subject-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 8px;
-      display: flex;
-      alignment: center;
-      justify-content: center;
-      color: white;
-      font-weight: bold;
+        width: 40px;
+        height: 40px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;      /* perfect vertical centering */
+        justify-content: center;  /* perfect horizontal centering */
+        color: white;
+        font-weight: bold;
+        font-size: 18px;
+        flex-shrink: 0; /* prevents icon from shrinking */
     }
-    .physics-icon { background: var(--physics); }
-    .chemistry-icon { background: var(--chemistry); }
-    .biology-icon { background: var(--biology); }
-    .maths-icon { background: var(--maths); }
 
-    /* Vertical Buttons */
-    .links {
-      display: flex;
-      flex-direction: column;
-      gap: 12px; /* More spacing */
-    }
+    /* --- FIXED BUTTON ALIGNMENT --- */
     .links a {
-      display: block;
-      width: 100%;
-      padding: 12px 14px;
-      text-decoration: none;
-      background: white;
-      border-radius: 10px;
-      border: 1px solid rgba(33,150,243,0.2);
-      color: var(--accent);
-      font-size: 13px;
-      font-weight: 600;
-      transition: all 0.2s ease;
-      text-align: center;
+        display: block;
+        width: calc(100% - 4px); /* ensures perfect margin */
+        margin: 0 auto 12px auto; /* centers + spacing */
+        padding: 12px 14px;
+        text-decoration: none;
+        background: white;
+        border-radius: 12px;
+        border: 1px solid rgba(33,150,243,0.25);
+        color: #1a73e8;
+        font-size: 14px;
+        font-weight: 600;
+        text-align: center;
+        transition: 0.2s;
     }
+
     .links a:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+        transform: translateY(-2px);
+        box-shadow: 0 3px 8px rgba(0,0,0,0.10);
     }
 
-    /* Mock 1 Button */
-    .mock1-button {
-      text-align: center;
-      margin-top: 40px;
-    }
-    .mock1-button a {
-      text-decoration: none;
-      background: var(--accent);
-      color: white;
-      padding: 12px 20px;
-      border-radius: 10px;
-      font-size: 14px;
-      font-weight: 600;
-      transition: 0.2s;
-    }
-    .mock1-button a:hover {
-      opacity: 0.85;
+    /* Mock 1 button at bottom */
+    .bottom-button {
+        text-align: center;
+        margin-top: 40px;
     }
 
-    @media (max-width: 900px) {
-      .grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
+    .bottom-button a {
+        padding: 12px 18px;
+        display: inline-block;
+        background: #fff;
+        border-radius: 10px;
+        border: 1px solid #ddd;
+        color: #1a73e8;
+        font-weight: bold;
+        text-decoration: none;
+        transition: 0.2s;
     }
-    @media (max-width: 600px) {
-      .grid {
-        grid-template-columns: 1fr;
-      }
+
+    .bottom-button a:hover {
+        transform: translateY(-2px);
     }
-  </style>
+</style>
 </head>
 
 <body>
 
-  <nav class="navbar">
-    <a href="https://www.igchkshop.dpdns.org" class="nav-logo">
-      <img src="https://www2.igchkshop.dpdns.org/img/igchkexam.jpg">
-      <span class="nav-title">IGC HK Exam</span>
-    </a>
-  </nav>
+<h1>IGC HK Exam Materials</h1>
 
-  <div class="container">
-    <div class="wrap">
-
-      <header>
-        <div class="logo">IGC</div>
-        <div>
-          <h1>IGC HK Exam – Mock 2 Paper Bank</h1>
-          <p class="lead">Self-Made Papers for Mock 2</p>
-        </div>
-      </header>
-
-      <section class="instructions">
-        <h2>Instructions</h2>
-        <p>Welcome to IGC HK Exam, this is a self-made paper which is tailored to Mock 2 content. Please utilise the paper wisely. Some of the questions or answers might be inaccurate, please do not rely on the mark scheme and use the content according to your own needs. IGC HK Exam do not bare any responsibility if there is a change in question or inaccurate content. Thank you.</p>
-      </section>
-
-      <!-- Subjects Grid -->
-      <section class="grid">
-
-        <!-- Physics -->
-        <article class="subject-card">
-          <div class="subject-header">
-            <div class="subject-icon physics-icon">P</div>
-            <h2>Physics</h2>
-          </div>
-          <div class="links">
-            <a href="https://ccoex.igchkshop.dpdns.org/mock2/s25-physics-igchk-qp.pdf" target="_blank">IGC HK Exam Paper – Physics (QP)</a>
-            <a href="https://ccoex.igchkshop.dpdns.org/mock2/s25-physics-igchk-ms.pdf" target="_blank">Mark Scheme</a>
-          </div>
-        </article>
-
-        <!-- Chemistry -->
-        <article class="subject-card">
-          <div class="subject-header">
-            <div class="subject-icon chemistry-icon">C</div>
-            <h2>Chemistry</h2>
-          </div>
-          <div class="links">
-            <a href="https://ccoex.igchkshop.dpdns.org/mock2/s25-chemistry-igchk-qp.pdf" target="_blank">IGC HK Exam Paper – Chemistry (QP)</a>
-            <a href="https://ccoex.igchkshop.dpdns.org/mock2/s25-chemistry-igchk-ms.pdf" target="_blank">Mark Scheme</a>
-            <a href="https://ccoex.igchkshop.dpdns.org/mock2/chemistry/a2-organic.pdf" target="_blank">A2 Organic Notes</a>
-            <a href="https://ccoex.igchkshop.dpdns.org/mock2/chemistry/as-organic.pdf" target="_blank">AS Organic Notes</a>
-          </div>
-        </article>
-
-        <!-- Biology -->
-        <article class="subject-card">
-          <div class="subject-header">
-            <div class="subject-icon biology-icon">B</div>
-            <h2>Biology</h2>
-          </div>
-          <div class="links">
-            <a href="https://ccoex.igchkshop.dpdns.org/mock2/s25-biology-igchk-qp.pdf" target="_blank">IGC HK Exam Paper – Biology (QP)</a>
-            <a href="https://ccoex.igchkshop.dpdns.org/mock2/s25-biology-igchk-ms.pdf" target="_blank">Mark Scheme</a>
-
-            <!-- Notes 3.1–3.8 -->
-            <a href="https://ccoex.igchkshop.dpdns.org/mock2/biology/notes/3.1.pdf" target="_blank">3.1</a>
-            <a href="https://ccoex.igchkshop.dpdns.org/mock2/biology/notes/3.2.pdf" target="_blank">3.2</a>
-            <a href="https://ccoex.igchkshop.dpdns.org/mock2/biology/notes/3.3.pdf" target="_blank">3.3</a>
-            <a href="https://ccoex.igchkshop.dpdns.org/mock2/biology/notes/3.4.pdf" target="_blank">3.4</a>
-            <a href="https://ccoex.igchkshop.dpdns.org/mock2/biology/notes/3.5.pdf" target="_blank">3.5</a>
-            <a href="https://ccoex.igchkshop.dpdns.org/mock2/biology/notes/3.6.pdf" target="_blank">3.6</a>
-            <a href="https://ccoex.igchkshop.dpdns.org/mock2/biology/notes/3.7.pdf" target="_blank">3.7</a>
-            <a href="https://ccoex.igchkshop.dpdns.org/mock2/biology/notes/3.8.pdf" target="_blank">3.8</a>
-          </div>
-        </article>
-
-        <!-- Maths -->
-        <article class="subject-card">
-          <div class="subject-header">
-            <div class="subject-icon maths-icon">M</div>
-            <h2>Maths</h2>
-          </div>
-          <div class="links">
-            <a href="https://ccoex.igchkshop.dpdns.org/mock2/s25-maths-igchk-qp.pdf" target="_blank">IGC HK Exam Paper – Maths (QP)</a>
-            <a href="https://ccoex.igchkshop.dpdns.org/mock2/s25-maths-igchk-ms.pdf" target="_blank">Mark Scheme</a>
-          </div>
-        </article>
-
-      </section>
-
-      <!-- Mock 1 Link -->
-      <div class="mock1-button">
-        <a href="https://ccoex.igchkshop.dpdns.org/mock1">Go to Mock 1 Content</a>
-      </div>
-
+<!-- PHYSICS -->
+<div class="subject-card">
+    <div class="subject-header">
+        <div class="subject-icon" style="background:#ef6c3d;">P</div>
+        <h2>Physics</h2>
     </div>
-  </div>
+    <div class="links">
+        <a href="#">IGC HK Exam Paper – Physics (QP)</a>
+        <a href="#">Mark Scheme</a>
+    </div>
+</div>
+
+<!-- CHEMISTRY -->
+<div class="subject-card">
+    <div class="subject-header">
+        <div class="subject-icon" style="background:#42a5f5;">C</div>
+        <h2>Chemistry</h2>
+    </div>
+    <div class="links">
+        <a href="#">IGC HK Exam Paper – Chemistry (QP)</a>
+        <a href="#">Mark Scheme</a>
+    </div>
+</div>
+
+<!-- BIOLOGY -->
+<div class="subject-card">
+    <div class="subject-header">
+        <div class="subject-icon" style="background:#66bb6a;">B</div>
+        <h2>Biology</h2>
+    </div>
+    <div class="links">
+        <a href="#">IGC HK Exam Paper – Biology (QP)</a>
+        <a href="#">Mark Scheme</a>
+    </div>
+</div>
+
+<!-- MATH -->
+<div class="subject-card">
+    <div class="subject-header">
+        <div class="subject-icon" style="background:#ab47bc;">M</div>
+        <h2>Mathematics</h2>
+    </div>
+    <div class="links">
+        <a href="#">IGC HK Exam Paper – Maths (QP)</a>
+        <a href="#">Mark Scheme</a>
+    </div>
+</div>
+
+<!-- Mock 1 Button -->
+<div class="bottom-button">
+    <a href="https://ccoex.igchkshop.dpdns.org/mock1">Go to Mock 1 Content</a>
+</div>
 
 </body>
 </html>
