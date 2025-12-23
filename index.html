@@ -1,325 +1,386 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login | IGC-HK</title>
-    <!-- Firebase SDKs -->
-    <script type="module">
-        // Import Firebase modules
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
-        import { 
-            getAuth, 
-            signInWithEmailAndPassword,
-            onAuthStateChanged
-        } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
-        
-        // Your Firebase configuration
-        const firebaseConfig = {
-            apiKey: "AIzaSyDV-pbFNyXTS6LMuzvSKbZnGysPOrZldcc",
-            authDomain: "igc-hk.firebaseapp.com",
-            projectId: "igc-hk",
-            storageBucket: "igc-hk.firebasestorage.app",
-            messagingSenderId: "1021412241243",
-            appId: "1:1021412241243:web:f5cb650b2ad46fafa7f47e",
-            measurementId: "G-EYW84F5CSY"
-        };
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | IGC HK Exam</title>
+  <style>
+    :root {
+      --bg: #fff8f0;
+      --card: #fff5e6;
+      --muted: #666666;
+      --accent: #2196f3;
+      --physics: #ff5722;
+      --chemistry: #4caf50;
+      --biology: #9c27b0;
+      --maths: #0077cc;
+      --radius: 12px;
+      font-family: Inter, Roboto, system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial;
+    }
 
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-        
-        // Check authentication state
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                // User is signed in, redirect to mock1.html
-                window.location.href = "mock1.html";
-            }
-        });
-        
-        // Make auth available globally
-        window.auth = auth;
-        window.signInWithEmailAndPassword = signInWithEmailAndPassword;
-    </script>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-        
-        .login-container {
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-            width: 100%;
-            max-width: 400px;
-            padding: 40px;
-        }
-        
-        .login-header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        
-        .login-header h1 {
-            color: #333;
-            font-size: 28px;
-            margin-bottom: 10px;
-        }
-        
-        .login-header p {
-            color: #666;
-            font-size: 14px;
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            color: #555;
-            font-weight: 500;
-            font-size: 14px;
-        }
-        
-        .form-group input {
-            width: 100%;
-            padding: 12px 15px;
-            border: 2px solid #e1e5e9;
-            border-radius: 8px;
-            font-size: 16px;
-            transition: all 0.3s ease;
-        }
-        
-        .form-group input:focus {
-            outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-        }
-        
-        .login-btn {
-            width: 100%;
-            padding: 14px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-        
-        .login-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
-        }
-        
-        .login-btn:active {
-            transform: translateY(0);
-        }
-        
-        .login-btn:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            transform: none;
-        }
-        
-        .error-message {
-            background: #fee;
-            color: #c33;
-            padding: 12px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            font-size: 14px;
-            display: none;
-        }
-        
-        .error-message.show {
-            display: block;
-        }
-        
-        .loading {
-            display: none;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        
-        .loading.show {
-            display: block;
-        }
-        
-        .spinner {
-            border: 3px solid #f3f3f3;
-            border-top: 3px solid #667eea;
-            border-radius: 50%;
-            width: 30px;
-            height: 30px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 10px;
-        }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        .logo {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        
-        .logo img {
-            max-width: 80px;
-            height: auto;
-        }
-        
-        @media (max-width: 480px) {
-            .login-container {
-                padding: 30px 20px;
-            }
-            
-            .login-header h1 {
-                font-size: 24px;
-            }
-        }
-    </style>
+    body {
+      margin: 0;
+      background: linear-gradient(180deg, #ffecd2 0%, #ffd8a8 100%);
+      color: #333;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Navbar */
+    .navbar {
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 28px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .nav-logo img {
+      width: 36px;
+      height: 36px;
+      border-radius: 6px;
+    }
+    .nav-title {
+      font-weight: 600;
+      color: #333;
+    }
+
+    /* Login Container */
+    .login-container {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 28px;
+    }
+
+    .login-card {
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(10px);
+      padding: 40px;
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.5);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .login-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .logo-circle {
+      width: 70px;
+      height: 70px;
+      background: linear-gradient(135deg, var(--accent), #7c4dff);
+      border-radius: 50%;
+      margin: 0 auto 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .login-header h1 {
+      color: #333;
+      margin-bottom: 8px;
+      font-size: 28px;
+    }
+
+    .login-header p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* Form Styles */
+    .form-group {
+      margin-bottom: 24px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      color: #555;
+      font-weight: 500;
+      font-size: 14px;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1px solid rgba(0,0,0,0.1);
+      border-radius: 10px;
+      font-size: 15px;
+      background: white;
+      transition: all 0.2s ease;
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.1);
+    }
+
+    .login-btn {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, var(--accent), #7c4dff);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .login-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(33, 150, 243, 0.3);
+    }
+
+    .login-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* Error Message */
+    .error-message {
+      background: rgba(255, 87, 34, 0.1);
+      color: #ff5722;
+      padding: 14px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      font-size: 14px;
+      border: 1px solid rgba(255, 87, 34, 0.2);
+      display: none;
+    }
+
+    .error-message.show {
+      display: block;
+    }
+
+    /* Loading Spinner */
+    .loading {
+      display: none;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .loading.show {
+      display: block;
+    }
+
+    .spinner {
+      border: 3px solid rgba(33, 150, 243, 0.1);
+      border-top: 3px solid var(--accent);
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 10px;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .login-card {
+        padding: 30px 20px;
+      }
+      
+      .login-header h1 {
+        font-size: 24px;
+      }
+      
+      .logo-circle {
+        width: 60px;
+        height: 60px;
+        font-size: 20px;
+      }
+    }
+  </style>
 </head>
-<body>
-    <div class="login-container">
-        <div class="logo">
-            <!-- Add your logo here -->
-            <div style="font-size: 36px; color: #667eea; font-weight: bold;">🔒</div>
-        </div>
-        
-        <div class="login-header">
-            <h1>Welcome Back</h1>
-            <p>Please sign in to continue</p>
-        </div>
-        
-        <div id="errorMessage" class="error-message"></div>
-        
-        <div id="loading" class="loading">
-            <div class="spinner"></div>
-            <p>Signing in...</p>
-        </div>
-        
-        <form id="loginForm">
-            <div class="form-group">
-                <label for="email">Email Address</label>
-                <input 
-                    type="email" 
-                    id="email" 
-                    name="email" 
-                    placeholder="Enter your email" 
-                    required
-                    autocomplete="username"
-                >
-            </div>
-            
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input 
-                    type="password" 
-                    id="password" 
-                    name="password" 
-                    placeholder="Enter your password" 
-                    required
-                    autocomplete="current-password"
-                >
-            </div>
-            
-            <button type="submit" class="login-btn" id="loginBtn">
-                Sign In
-            </button>
-        </form>
-    </div>
 
-    <script>
-        // Handle form submission
-        document.getElementById('loginForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            const loginBtn = document.getElementById('loginBtn');
-            const errorMessage = document.getElementById('errorMessage');
-            const loading = document.getElementById('loading');
-            
-            // Reset error message
-            errorMessage.textContent = '';
-            errorMessage.classList.remove('show');
-            
-            // Show loading state
-            loginBtn.disabled = true;
-            loading.classList.add('show');
-            
-            try {
-                // Sign in with Firebase
-                await window.signInWithEmailAndPassword(window.auth, email, password);
-                
-                // Success - redirect will happen automatically via auth state listener
-                
-            } catch (error) {
-                // Handle errors
-                loading.classList.remove('show');
-                loginBtn.disabled = false;
-                
-                let message = 'Login failed. Please try again.';
-                
-                switch(error.code) {
-                    case 'auth/user-not-found':
-                        message = 'No account found with this email.';
-                        break;
-                    case 'auth/wrong-password':
-                        message = 'Incorrect password. Please try again.';
-                        break;
-                    case 'auth/invalid-email':
-                        message = 'Invalid email address.';
-                        break;
-                    case 'auth/user-disabled':
-                        message = 'This account has been disabled.';
-                        break;
-                    case 'auth/too-many-requests':
-                        message = 'Too many failed attempts. Please try again later.';
-                        break;
-                    case 'auth/network-request-failed':
-                        message = 'Network error. Please check your connection.';
-                        break;
-                }
-                
-                errorMessage.textContent = message;
-                errorMessage.classList.add('show');
-                
-                // Clear password field
-                document.getElementById('password').value = '';
-            }
-        });
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a href="https://www.igchkshop.dpdns.org" class="nav-logo">
+      <img src="https://www2.igchkshop.dpdns.org/img/igchkexam.jpg">
+      <span class="nav-title">IGC HK Exam</span>
+    </a>
+  </nav>
+
+  <!-- Login Form -->
+  <div class="login-container">
+    <div class="login-card">
+      <div class="login-header">
+        <div class="logo-circle">IGC</div>
+        <h1>Welcome Back</h1>
+        <p>Sign in to access exam resources</p>
+      </div>
+
+      <div id="errorMessage" class="error-message"></div>
+      
+      <div id="loading" class="loading">
+        <div class="spinner"></div>
+        <p>Signing in...</p>
+      </div>
+
+      <form id="loginForm">
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input 
+            type="email" 
+            id="email" 
+            class="form-control" 
+            placeholder="Enter your email" 
+            required
+            autocomplete="username"
+          >
+        </div>
         
-        // Auto-focus email field on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            document.getElementById('email').focus();
-        });
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input 
+            type="password" 
+            id="password" 
+            class="form-control" 
+            placeholder="Enter your password" 
+            required
+            autocomplete="current-password"
+          >
+        </div>
         
-        // Enter key support (submit form when Enter is pressed in password field)
-        document.getElementById('password').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                document.getElementById('loginForm').dispatchEvent(new Event('submit'));
-            }
-        });
-    </script>
+        <button type="submit" class="login-btn" id="loginBtn">
+          Sign In
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Firebase Authentication -->
+  <script type="module">
+    // Import Firebase modules
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+    import { 
+      getAuth, 
+      signInWithEmailAndPassword,
+      onAuthStateChanged
+    } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
+    
+    // Your Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyDV-pbFNyXTS6LMuzvSKbZnGysPOrZldcc",
+      authDomain: "igc-hk.firebaseapp.com",
+      projectId: "igc-hk",
+      storageBucket: "igc-hk.firebasestorage.app",
+      messagingSenderId: "1021412241243",
+      appId: "1:1021412241243:web:f5cb650b2ad46fafa7f47e",
+      measurementId: "G-EYW84F5CSY"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    
+    // Check if user is already logged in
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is signed in, redirect to mock1.html
+        window.location.href = "mock1.html";
+      }
+    });
+    
+    // Handle form submission
+    document.getElementById('loginForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const loginBtn = document.getElementById('loginBtn');
+      const errorMessage = document.getElementById('errorMessage');
+      const loading = document.getElementById('loading');
+      
+      // Reset error message
+      errorMessage.textContent = '';
+      errorMessage.classList.remove('show');
+      
+      // Show loading state
+      loginBtn.disabled = true;
+      loading.classList.add('show');
+      
+      try {
+        // Sign in with Firebase
+        await signInWithEmailAndPassword(auth, email, password);
+        
+        // Success - redirect will happen automatically via auth state listener
+        
+      } catch (error) {
+        // Handle errors
+        loading.classList.remove('show');
+        loginBtn.disabled = false;
+        
+        let message = 'Login failed. Please try again.';
+        
+        switch(error.code) {
+          case 'auth/user-not-found':
+            message = 'No account found with this email.';
+            break;
+          case 'auth/wrong-password':
+            message = 'Incorrect password. Please try again.';
+            break;
+          case 'auth/invalid-email':
+            message = 'Invalid email address.';
+            break;
+          case 'auth/user-disabled':
+            message = 'This account has been disabled.';
+            break;
+          case 'auth/too-many-requests':
+            message = 'Too many failed attempts. Please try again later.';
+            break;
+          case 'auth/network-request-failed':
+            message = 'Network error. Please check your connection.';
+            break;
+        }
+        
+        errorMessage.textContent = message;
+        errorMessage.classList.add('show');
+        
+        // Clear password field
+        document.getElementById('password').value = '';
+      }
+    });
+    
+    // Auto-focus email field on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('email').focus();
+    });
+    
+    // Enter key support
+    document.getElementById('password').addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        document.getElementById('loginForm').dispatchEvent(new Event('submit'));
+      }
+    });
+  </script>
 </body>
 </html>
