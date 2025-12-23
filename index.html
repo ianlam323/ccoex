@@ -1,75 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirecting...</title>
-    <!-- Instant redirect - no delay -->
-    <meta http-equiv="refresh" content="0; url=https://ccoex.igchkshop.dpdns.org/mock2">
-    
-    <!-- For better compatibility and immediate redirect -->
-    <script>
-        // Immediate JavaScript redirect as primary method
-        window.location.replace("https://ccoex.igchkshop.dpdns.org/mock2");
+// auth-guard.js
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+import { 
+    getAuth, 
+    onAuthStateChanged,
+    signOut 
+} from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
+
+// Your Firebase configuration
+const firebaseConfig = {
+    apiKey: "AIzaSyDV-pbFNyXTS6LMuzvSKbZnGysPOrZldcc",
+    authDomain: "igc-hk.firebaseapp.com",
+    projectId: "igc-hk",
+    storageBucket: "igc-hk.firebasestorage.app",
+    messagingSenderId: "1021412241243",
+    appId: "1:1021412241243:web:f5cb650b2ad46fafa7f47e",
+    measurementId: "G-EYW84F5CSY"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+// Check authentication state
+onAuthStateChanged(auth, (user) => {
+    if (!user) {
+        // User is not signed in, redirect to login page
+        window.location.href = "index.html";
+    } else {
+        // User is signed in, show user info
+        console.log("User is logged in:", user.email);
         
-        // Backup in case JavaScript is blocked
-        setTimeout(function() {
-            window.location.href = "https://ccoex.igchkshop.dpdns.org/mock2";
-        }, 10);
-    </script>
-    
-    <!-- Fallback for browsers that don't support JavaScript -->
-    <noscript>
-        <meta http-equiv="refresh" content="0; url=https://ccoex.igchkshop.dpdns.org/mock2">
-    </noscript>
-    
-    <style>
-        /* Minimal styling just in case redirect is delayed */
-        * {
-            margin: 0;
-            padding: 0;
+        // Optionally display user info on the page
+        if (document.getElementById('userEmail')) {
+            document.getElementById('userEmail').textContent = user.email;
         }
-        
-        body {
-            background-color: #f5f5f5;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            font-family: Arial, sans-serif;
-        }
-        
-        .redirect-message {
-            text-align: center;
-            color: #333;
-            max-width: 500px;
-            padding: 20px;
-        }
-        
-        .redirect-message a {
-            color: #0066cc;
-            text-decoration: none;
-        }
-        
-        .redirect-message a:hover {
-            text-decoration: underline;
-        }
-    </style>
-</head>
-<body>
-    <!-- Fallback content in case redirect doesn't work immediately -->
-    <div class="redirect-message">
-        <h2>Redirecting...</h2>
-        <p>You are being redirected to: <strong>https://ccoex.igchkshop.dpdns.org/mock2</strong></p>
-        <p>If you are not redirected automatically, please <a href="https://ccoex.igchkshop.dpdns.org/mock2">click here</a>.</p>
-    </div>
-    
-    <!-- Additional JavaScript for instant redirect -->
-    <script>
-        // One more immediate redirect attempt
-        if (!window.location.href.includes('mock2')) {
-            window.location.href = "https://ccoex.igchkshop.dpdns.org/mock2";
-        }
-    </script>
-</body>
-</html>
+    }
+});
+
+// Logout function (optional - add if you want logout button)
+window.logout = async function() {
+    try {
+        await signOut(auth);
+        // Redirect happens automatically via onAuthStateChanged
+    } catch (error) {
+        console.error('Logout error:', error);
+    }
+};
