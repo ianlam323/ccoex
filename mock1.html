@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>IGC HK Exam - Mock 1 Paper Bank</title>
+  <title>IGC HK Exam - WJEC Past Paper Bank</title>
   
-  <!-- Firebase Authentication Script -->
+  <!-- Firebase Authentication Script - ADD THIS SECTION -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
     import { 
@@ -85,18 +85,22 @@
       --physics: #ff5722;
       --chemistry: #4caf50;
       --biology: #9c27b0;
-      --maths: #0077cc;
       --radius: 12px;
       font-family: Inter, Roboto, system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial;
     }
-
-    body {
+    html, body {
+      height: 100%;
       margin: 0;
-      background: linear-gradient(180deg, #ffecd2 0%, #ffd8a8 100%);
-      color: #333;
+      padding: 0;
     }
-
-    /* Navbar */
+    body {
+      background: linear-gradient(180deg, #ffecd2 0%, #ffd8a8 100%);
+      color: #333333;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      padding: 0;
+    }
+    /* Navigation Bar */
     .navbar {
       background: rgba(255,255,255,0.85);
       backdrop-filter: blur(8px);
@@ -119,78 +123,110 @@
       width: 36px;
       height: 36px;
       border-radius: 6px;
+      object-fit: cover;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
     }
     .nav-title {
       font-weight: 600;
       color: #333;
+      font-size: 16px;
     }
     
-    /* User Info in Navbar */
+    /* User Info in Navbar - ADDED THIS SECTION */
     .user-info {
       display: flex;
       align-items: center;
       gap: 10px;
     }
 
-    /* Layout */
     .container {
       max-width: 1200px;
       margin: 0 auto;
       padding: 28px;
     }
     .wrap {
-      background: rgba(255,255,255,0.65);
-      padding: 28px;
+      width: 100%;
+      background: linear-gradient(180deg, rgba(255,255,255,0.7), rgba(255,255,255,0.5));
       border-radius: 16px;
-      border: 1px solid rgba(255,255,255,0.5);
       box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      padding: 28px;
+      border: 1px solid rgba(255,255,255,0.5);
+      margin-bottom: 28px;
     }
-
-    /* Header */
     header {
       display: flex;
       gap: 16px;
       align-items: center;
+      margin-bottom: 18px;
     }
     .logo {
       width: 56px;
       height: 56px;
-      background: linear-gradient(135deg, var(--accent), #7c4dff);
       border-radius: 10px;
+      background: linear-gradient(135deg, var(--accent), #7c4dff);
       display: flex;
       align-items: center;
       justify-content: center;
       font-weight: 700;
       color: white;
+      box-shadow: 0 6px 18px rgba(33,150,243,0.2);
+      flex: 0 0 56px;
     }
-
-    /* Instructions */
+    h1 {
+      font-size: 20px;
+      margin: 0;
+      letter-spacing: 0.2px;
+      color: #333;
+    }
+    p.lead {
+      margin: 4px 0 0 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .header-image {
+      width: 100px;
+      height: auto;
+      border-radius: 10px;
+      margin: 10px 0 20px 0;
+      display: block;
+    }
     .instructions {
       background: var(--card);
-      border-left: 4px solid var(--accent);
+      border-radius: var(--radius);
       padding: 18px;
-      margin: 20px 0;
-      border-radius: 12px;
+      margin-bottom: 28px;
+      border-left: 4px solid var(--accent);
     }
-
-    /* Grid 4 Columns */
+    .instructions h2 {
+      margin-top: 0;
+      font-size: 16px;
+      color: var(--accent);
+    }
+    .instructions p {
+      font-size: 14px;
+      line-height: 1.5;
+      color: #444;
+      margin: 0;
+    }
     .grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 20px;
+      margin-top: 18px;
     }
-
-    /* Subject Cards */
     .subject-card {
       background: var(--card);
+      border-radius: var(--radius);
       padding: 20px;
-      border-radius: 12px;
       border: 1px solid rgba(0,0,0,0.05);
+      display: flex;
+      flex-direction: column;
+      min-height: 200px;
     }
     .subject-header {
       display: flex;
-      gap: 12px;
       align-items: center;
+      gap: 12px;
       margin-bottom: 16px;
     }
     .subject-icon {
@@ -200,111 +236,150 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      font-weight: 700;
       color: white;
-      font-weight: bold;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
-    .physics-icon { background: var(--physics); }
-    .chemistry-icon { background: var(--chemistry); }
-    .biology-icon { background: var(--biology); }
-    .maths-icon { background: var(--maths); }
-
-    /* Vertical Buttons */
-    .links {
+    .physics-icon { background: linear-gradient(135deg, var(--physics), #ff8a65); }
+    .chemistry-icon { background: linear-gradient(135deg, var(--chemistry), #81c784); }
+    .biology-icon { background: linear-gradient(135deg, var(--biology), #ba68c8); }
+    .subject-title {
+      font-weight: 600;
+      font-size: 18px;
+      margin: 0;
+      color: #333;
+    }
+    .resource-list {
       display: flex;
       flex-direction: column;
       gap: 12px;
+      margin-top: 10px;
+    }
+    .resource-item {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .resource-name {
+      font-weight: 600;
+      font-size: 14px;
+      color: #333;
+    }
+    .resource-desc {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+    .links {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
     }
     .links a {
-      display: block;
-      width: 100%;
-      padding: 12px 14px;
       text-decoration: none;
-      background: white;
+      background: linear-gradient(90deg, rgba(0,0,0,0.03), rgba(0,0,0,0.01));
+      padding: 8px 12px;
       border-radius: 10px;
-      border: 1px solid rgba(33,150,243,0.2);
       color: var(--accent);
-      font-size: 13px;
+      border: 1px solid rgba(33,150,243,0.2);
       font-weight: 600;
+      font-size: 12px;
       transition: all 0.2s ease;
-      text-align: center;
     }
     .links a:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.1);
+      background: linear-gradient(90deg, rgba(33,150,243,0.1), rgba(33,150,243,0.05));
     }
-
-    /* Mock 2 Button */
-    .mock2-button {
-      text-align: center;
-      margin-top: 40px;
+    .physics-links a:hover { color: var(--physics); border-color: rgba(255,87,34,0.3); }
+    .chemistry-links a:hover { color: var(--chemistry); border-color: rgba(76,175,80,0.3); }
+    .biology-links a:hover { color: var(--biology); border-color: rgba(156,39,176,0.3); }
+    .revision-section {
+      margin-top: 20px;
+      padding-top: 15px;
+      border-top: 1px dashed rgba(0,0,0,0.1);
     }
-    .mock2-button a {
-      text-decoration: none;
-      background: var(--accent);
-      color: white;
-      padding: 12px 20px;
-      border-radius: 10px;
-      font-size: 14px;
+    .revision-title {
       font-weight: 600;
-      transition: 0.2s;
+      font-size: 15px;
+      color: #333;
+      margin-bottom: 10px;
     }
-    .mock2-button a:hover {
-      opacity: 0.85;
+    footer {
+      margin-top: 28px;
+      color: var(--muted);
+      font-size: 13px;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
     }
-
-    @media (max-width: 900px) {
-      .grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-    @media (max-width: 600px) {
-      .grid {
-        grid-template-columns: 1fr;
-      }
+    .small { font-size: 12px; color: var(--muted); }
+    @media (max-width: 768px) {
+      .grid { grid-template-columns: 1fr; }
+      header { gap: 10px; }
+      .logo { width: 48px; height: 48px; }
+      footer { flex-direction: column; text-align: center; }
     }
   </style>
 </head>
-
 <body>
-
+  <!-- Global Navigation Bar -->
   <nav class="navbar">
     <a href="https://www.igchkshop.dpdns.org" class="nav-logo">
-      <img src="https://www2.igchkshop.dpdns.org/img/igchkexam.jpg">
+      <img src="https://www2.igchkshop.dpdns.org/img/igchkexam.jpg" alt="IGC HK Exam Logo">
       <span class="nav-title">IGC HK Exam</span>
     </a>
     <!-- User info will be added here by JavaScript -->
   </nav>
 
   <div class="container">
-    <div class="wrap">
-
+    <div class="wrap" role="main">
       <header>
-        <div class="logo">IGC</div>
+        <div class="logo" aria-hidden="true">IGC</div>
         <div>
-          <h1>IGC HK Exam – Mock 1 Paper Bank</h1>
-          <p class="lead">Self-Made Papers for Mock 1</p>
+          <h1>IGC HK Exam - WJEC Past Paper Bank</h1>
+          <p class="lead">Access past papers, essential questions, and QER predictions for your exams</p>
         </div>
       </header>
 
+      <!-- Small logo image -->
+      <img src="https://www2.igchkshop.dpdns.org/img/igchkexam.jpg" alt="IGC HK Exam Logo" class="header-image">
+
       <section class="instructions">
         <h2>Instructions</h2>
-        <p>Welcome to IGC HK Exam, this is a self-made paper which is tailored to Mock 1 content. Please utilise the paper wisely. Some of the questions or answers might be inaccurate, please do not rely on the mark scheme and use the content according to your own needs. IGC HK Exam do not bare any responsibility if there is a change in question or inaccurate content. Thank you.</p>
+        <p>This is IGC HK Exam - WJEC past paper bank, questions are related to school mock exams and are likely to come up in exams. There are three main documents for each subject, Past Paper Bank, Questions You Must Do and QER. The past paper bank consist of 90-100 pages so please do it at your own pace and please don't complete all of them. As the second document title shows, these Questions You Must Do are question styles you are very likely to encounter during exams, so please spend time doing these. Lastly is the QER predictions, these are just sample QER. If you have any questions or concerns with copyright issues, please email wjec@igchkshop.dpdns.org for enquiries or visit www.igchkshop.dpdns.org for further reference. Good luck with revision and may the force be with you!</p>
       </section>
 
-      <!-- Subjects Grid -->
-      <section class="grid">
-
+      <section class="grid" aria-label="Subject resources">
         <!-- Physics -->
         <article class="subject-card">
           <div class="subject-header">
             <div class="subject-icon physics-icon">P</div>
-            <h2>Physics</h2>
+            <h2 class="subject-title">Physics</h2>
           </div>
-          <div class="links">
-            <a href="https://ccoex.igchkshop.dpdns.org/mock1/s25-physics-igchk-qp.pdf" target="_blank">IGC HK Exam Paper – Physics (QP)</a>
-            <a href="https://ccoex.igchkshop.dpdns.org/mock1/s25-physics-igchk-ms.pdf" target="_blank">Mark Scheme</a>
-            <a href="https://wjec.exam.igchkshop.dpdns.org/physics/a2/past_paper_topic" target="_blank">WJEC & Eduqas PPQ by Topic</a>
-            <p> Note: WJEC Topic 3.1-3.4 is equivalent to Eduqas Component 1.5-1.8 ; WJEC Topic 3.5-3.6 is equivalent to Eduqas Component 3.6,3.8</p>
+          <div class="resource-list">
+            <div class="resource-item">
+              <div class="resource-name">Past Paper Bank</div>
+              <div class="resource-desc">Comprehensive collection of past papers (90-100 pages)</div>
+              <div class="links physics-links">
+                <a href="https://ccoex.igchkshop.dpdns.org/file/phy_m1.pdf" target="_blank">Open PDF</a>
+              </div>
+            </div>
+            <div class="resource-item">
+              <div class="resource-name">Questions You Must Do</div>
+              <div class="resource-desc">Essential questions likely to appear in exams</div>
+              <div class="links physics-links">
+                <a href="https://ccoex.igchkshop.dpdns.org/file/phy_qymd.pdf" target="_blank">Open PDF</a>
+              </div>
+            </div>
+            <div class="resource-item">
+              <div class="resource-name">QER Predictions</div>
+              <div class="resource-desc">Sample QER predictions for Physics</div>
+              <div class="links physics-links">
+                <a href="https://www2.igchkshop.dpdns.org/mock1/Predicted%20QER%20Physics.pdf" target="_blank">Open PDF</a>
+              </div>
+            </div>
           </div>
         </article>
 
@@ -312,16 +387,29 @@
         <article class="subject-card">
           <div class="subject-header">
             <div class="subject-icon chemistry-icon">C</div>
-            <h2>Chemistry</h2>
+            <h2 class="subject-title">Chemistry</h2>
           </div>
-          <div class="links">
-            <a href="https://ccoex.igchkshop.dpdns.org/mock1/s25-chemistry-igchk-qp.pdf" target="_blank">IGC HK Exam Paper – Chemistry (QP)</a>
-            <a href="https://ccoex.igchkshop.dpdns.org/mock1/s25-chemistry-igchk-ms.pdf" target="_blank">Mark Scheme</a>
-            <a href="https://ccoex.igchkshop.dpdns.org/notes/chemistry/a2-organic.pdf" target="_blank">A2 Organic Notes</a>
-            <a href="https://ccoex.igchkshop.dpdns.org/notes/chemistry/as-organic.pdf" target="_blank">AS Organic Notes</a>
-            <a href="https://drive.google.com/drive/folders/16OaDF47_IxD6zjqLAlqrbd5G9l6TUxKM" target="_blank">Eduqas C2 Past Paper</a>
-            <p>IGC HK Exam regret to inform you we do not have Chemistry PPQ by Topic for both WJEC and Eduqas Organic Chemistry.</p>
-            <p>WJEC Unit 4 Organic Chemistry is equivalent to Eduqas Component 2 Organic Chemistry</p>
+          <div class="resource-list">
+            <div class="resource-item">
+              <div class="resource-name">Past Paper Bank</div>
+              <div class="resource-desc">Comprehensive collection of past papers (90-100 pages)</div>
+              <div class="links chemistry-links">
+                <a href="https://ccoex.igchkshop.dpdns.org/file/chem_m1.pdf" target="_blank">Open PDF</a>
+              </div>
+            </div>
+            <div class="resource-item">
+              <div class="resource-name">Questions You Must Do</div>
+              <div class="resource-desc">Essential questions likely to appear in exams</div>
+              <div class="links chemistry-links">
+                <a href="https://ccoex.igchkshop.dpdns.org/file/chem_qymd.pdf" target="_blank">Open PDF</a>
+              </div>
+            </div>
+            <div class="revision-section">
+              <div class="revision-title">Revision Notes</div>
+              <div class="links chemistry-links">
+                <a href="https://ccoex.igchkshop.dpdns.org/notes/chemistry/equationlist.html" target="_blank">Equation List</a>
+              </div>
+            </div>
           </div>
         </article>
 
@@ -329,38 +417,49 @@
         <article class="subject-card">
           <div class="subject-header">
             <div class="subject-icon biology-icon">B</div>
-            <h2>Biology</h2>
+            <h2 class="subject-title">Biology</h2>
           </div>
-          <div class="links">
-            <a href="https://ccoex.igchkshop.dpdns.org/mock1/s25-biology-igchk-qp.pdf" target="_blank">IGC HK Exam Paper – Biology (QP)</a>
-            <a href="https://ccoex.igchkshop.dpdns.org/mock1/s25-biology-igchk-ms.pdf" target="_blank">Mark Scheme</a>
-            <a href="https://ccoex.igchkshop.dpdns.org/notes/biology/igchkexam-biou3.pdf" target="_blank">IGC HK Exam U3 Condense Notes</a>
-            <a href="https://wjec.exam.igchkshop.dpdns.org/biology/a2/past_paper_topic" target="_blank">WJEC & Eduqas PPQ by Topic</a>
-            <p> Note: WJEC Topic 3.1-3.6 is equivalent to Eduqas Component 1.1-1.6 ; WJEC Topic 3.7-3.8 is equivalent to Eduqas Component 3.4-3.5</p>
+          <div class="resource-list">
+            <div class="resource-item">
+              <div class="resource-name">Past Paper Bank</div>
+              <div class="resource-desc">Comprehensive collection of past papers (90-100 pages)</div>
+              <div class="links biology-links">
+                <a href="https://ccoex.igchkshop.dpdns.org/file/bio_m1.pdf" target="_blank">Open PDF</a>
+              </div>
+            </div>
+            <div class="resource-item">
+              <div class="resource-name">Questions You Must Do</div>
+              <div class="resource-desc">Essential questions likely to appear in exams</div>
+              <div class="links biology-links">
+                <a href="https://ccoex.igchkshop.dpdns.org/file/bio_qymd.pdf" target="_blank">Open PDF</a>
+              </div>
+            </div>
+            <div class="resource-item">
+              <div class="resource-name">QER Predictions</div>
+              <div class="resource-desc">Sample QER predictions for Biology</div>
+              <div class="links biology-links">
+                <a href="https://www2.igchkshop.dpdns.org/mock1/Predicted%20QER%20Biology.pdf" target="_blank">Open PDF</a>
+              </div>
+            </div>
+            <div class="revision-section">
+              <div class="revision-title">Revision Notes</div>
+              <div class="links biology-links">
+                <a href="https://ccoex.igchkshop.dpdns.org/notes/biology/3.1.html" target="_blank">3.1</a>
+                <a href="https://ccoex.igchkshop.dpdns.org/notes/biology/3.2.html" target="_blank">3.2</a>
+                <a href="https://ccoex.igchkshop.dpdns.org/notes/biology/3.4.html" target="_blank">3.4</a>
+                <a href="https://ccoex.igchkshop.dpdns.org/notes/biology/3.5.html" target="_blank">3.5</a>
+                <a href="https://ccoex.igchkshop.dpdns.org/notes/biology/3.6.html" target="_blank">3.6</a>
+              </div>
+            </div>
           </div>
         </article>
-
-        <!-- Maths -->
-        <article class="subject-card">
-          <div class="subject-header">
-            <div class="subject-icon maths-icon">M</div>
-            <h2>Maths</h2>
-          </div>
-          <div class="links">
-            <a href="https://ccoex.igchkshop.dpdns.org/mock1/s25-maths-igchk-qp.pdf" target="_blank">IGC HK Exam Paper – Maths (QP)</a>
-            <a href="https://ccoex.igchkshop.dpdns.org/mock1/s25-maths-igchk-ms.pdf" target="_blank">Mark Scheme</a>
-          </div>
-        </article>
-
       </section>
 
-      <!-- Mock 2 Link -->
-      <div class="mock2-button">
-        <a href="https://ccoex.igchkshop.dpdns.org/mock2">Go to Mock 2 Content</a>
-      </div>
-
+      <footer>
+        <div class="small">Tip: Right-click links → "Open in new tab" (or tap on mobile).</div>
+        <div class="small">Made for quick access • 2025</div>
+      </footer>
     </div>
   </div>
-
 </body>
 </html>
