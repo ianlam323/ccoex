@@ -81,18 +81,13 @@
       margin-bottom: 30px;
     }
 
-    .logo-circle {
-      width: 70px;
-      height: 70px;
-      background: linear-gradient(135deg, var(--accent), #7c4dff);
-      border-radius: 50%;
+    /* ===== MODIFICATION 1: Updated Logo ===== */
+    .logo-image {
+      width: 100px; /* Adjust size as needed */
+      height: auto;
       margin: 0 auto 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 24px;
-      font-weight: 700;
+      display: block;
+      border-radius: 10px;
     }
 
     .login-header h1 {
@@ -104,6 +99,7 @@
     .login-header p {
       color: var(--muted);
       font-size: 14px;
+      line-height: 1.5;
     }
 
     /* Form Styles */
@@ -211,10 +207,8 @@
         font-size: 24px;
       }
       
-      .logo-circle {
-        width: 60px;
-        height: 60px;
-        font-size: 20px;
+      .logo-image {
+        width: 80px;
       }
     }
   </style>
@@ -233,9 +227,14 @@
   <div class="login-container">
     <div class="login-card">
       <div class="login-header">
-        <div class="logo-circle">IGC</div>
-        <h1>Welcome Back</h1>
-        <p>Sign in to access exam resources</p>
+        <!-- ===== MODIFICATION 1: Logo Image ===== -->
+        <img src="https://www2.igchkshop.dpdns.org/img/igchkexam.jpg" alt="IGC HK Exam Logo" class="logo-image">
+        
+        <!-- ===== MODIFICATION 2: Updated Heading ===== -->
+        <h1>Welcome back to IGC HK Exam - WJEC</h1>
+        
+        <!-- ===== MODIFICATION 3: Updated Description ===== -->
+        <p>Sign in to access exam resources. IGC HK Exam is only available by invitation only.</p>
       </div>
 
       <div id="errorMessage" class="error-message"></div>
@@ -305,8 +304,8 @@
     // Check if user is already logged in
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        // User is signed in, redirect to mock1.html
-        window.location.href = "mock1.html";
+        // ===== MODIFICATION 4: Redirect to mock2 instead of mock1 =====
+        window.location.href = "mock2.html"; // Changed from mock1.html
       }
     });
     
