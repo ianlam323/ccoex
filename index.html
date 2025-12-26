@@ -227,6 +227,41 @@
       100% { transform: rotate(360deg); }
     }
 
+    /* Refresh Button (shows after 8 seconds) - NEW ADDITION */
+    .refresh-button-container {
+      display: none;
+      text-align: center;
+      margin-top: 15px;
+    }
+
+    .refresh-button-container.show {
+      display: block;
+    }
+
+    .refresh-button {
+      background: transparent;
+      color: var(--muted);
+      border: 1px solid rgba(0,0,0,0.1);
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 13px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .refresh-button:hover {
+      background: rgba(0,0,0,0.03);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .refresh-button:active {
+      transform: translateY(1px);
+    }
+
     /* FAQ Link Button - Floating Button */
     .faq-link {
       position: fixed;
@@ -309,6 +344,17 @@
       <div id="loading" class="loading">
         <div class="spinner"></div>
         <p>Signing in...</p>
+        <!-- Refresh Button Container - NEW ADDITION -->
+        <div id="refreshButtonContainer" class="refresh-button-container">
+          <button id="refreshButton" class="refresh-button">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M23 4V10H17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M1 20V14H7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M3.51 9C4.15839 7.13077 5.38734 5.52429 7.01166 4.41284C8.63598 3.30139 10.5677 2.73956 12.5157 2.80243C14.4637 2.86531 16.3564 3.55001 17.8961 4.75476C19.4359 5.95951 20.5462 7.62344 21.07 9.5M1 14C1.64639 15.8692 2.87534 17.4757 4.49966 18.5872C6.12398 19.6986 8.05571 20.2604 10.0037 20.1976C11.9517 20.1347 13.8444 19.45 15.3841 18.2452C16.9239 17.0405 18.0342 15.3766 18.558 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Stuck? Refresh Page
+          </button>
+        </div>
       </div>
 
       <form id="loginForm">
@@ -403,22 +449,39 @@
       const loginBtn = document.getElementById('loginBtn');
       const errorMessage = document.getElementById('errorMessage');
       const loading = document.getElementById('loading');
+      const refreshButtonContainer = document.getElementById('refreshButtonContainer');
       
       // Reset error message
       errorMessage.textContent = '';
       errorMessage.classList.remove('show');
       
+      // Reset refresh button
+      refreshButtonContainer.classList.remove('show');
+      
       // Show loading state
       loginBtn.disabled = true;
       loading.classList.add('show');
+      
+      // Set timeout to show refresh button after 8 seconds
+      const refreshTimeout = setTimeout(() => {
+        refreshButtonContainer.classList.add('show');
+      }, 8000);
       
       try {
         // Sign in with Firebase
         await signInWithEmailAndPassword(auth, email, password);
         
+        // Clear the timeout if login succeeds quickly
+        clearTimeout(refreshTimeout);
+        refreshButtonContainer.classList.remove('show');
+        
         // Success - redirect will happen automatically via auth state listener
         
       } catch (error) {
+        // Clear the timeout on error
+        clearTimeout(refreshTimeout);
+        refreshButtonContainer.classList.remove('show');
+        
         // Handle errors
         loading.classList.remove('show');
         loginBtn.disabled = false;
@@ -452,6 +515,11 @@
         // Clear password field
         document.getElementById('password').value = '';
       }
+    });
+    
+    // Handle refresh button click
+    document.getElementById('refreshButton').addEventListener('click', function() {
+      location.reload();
     });
     
     // Auto-focus email field on page load
