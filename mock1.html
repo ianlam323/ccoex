@@ -305,6 +305,44 @@
       color: #333;
       margin-bottom: 10px;
     }
+    
+    /* ===== MOCK 2 BUTTON - NEW ADDITION ===== */
+    .mock2-button {
+      text-align: center;
+      margin-top: 40px;
+      margin-bottom: 20px;
+    }
+    
+    .mock2-button a {
+      text-decoration: none;
+      background: linear-gradient(135deg, #ff5722, #ff8a65);
+      color: white;
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.3s ease;
+      box-shadow: 0 6px 20px rgba(255, 87, 34, 0.25);
+    }
+    
+    .mock2-button a:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(255, 87, 34, 0.35);
+      background: linear-gradient(135deg, #e64a19, #ff7043);
+    }
+    
+    .mock2-button a:active {
+      transform: translateY(-1px);
+    }
+    
+    .mock2-button .button-icon {
+      font-size: 18px;
+    }
+    /* ===== END MOCK 2 BUTTON ===== */
+    
     footer {
       margin-top: 28px;
       color: var(--muted);
@@ -320,6 +358,17 @@
       header { gap: 10px; }
       .logo { width: 48px; height: 48px; }
       footer { flex-direction: column; text-align: center; }
+      
+      /* Mobile adjustments for Mock 2 button */
+      .mock2-button {
+        margin-top: 30px;
+        margin-bottom: 15px;
+      }
+      
+      .mock2-button a {
+        padding: 12px 20px;
+        font-size: 14px;
+      }
     }
   </style>
 </head>
@@ -454,6 +503,14 @@
           </div>
         </article>
       </section>
+      
+      <!-- ===== MOCK 2 BUTTON - NEW ADDITION ===== -->
+      <div class="mock2-button">
+        <a href="https://ccoex.igchkshop.dpdns.org/mock2.html">
+          <span class="button-icon">➡️</span>
+          Go to Mock 2 Papers
+        </a>
+      </div>
 
       <footer>
         <div class="small">Tip: Right-click links → "Open in new tab" (or tap on mobile).</div>
