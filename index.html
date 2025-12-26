@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>IGC HK Exam | Login</title>
-  <link rel="icon" type="image/x-icon" href="https://www2.igchkshop.dpdns.org/img/igchkexampure.jpg">
-  <link rel="apple-touch-icon" href="https://www2.igchkshop.dpdns.org/img/igchkexam.jpg">
+  <link rel="icon" type="image/x-icon" href="https://www2.igchkshop.dpdns.org/img/igchkexam.jpg">
+  <link rel="apple-touch-icon" href="https://www2.igchkshop.dpdns.org/img/igchkexam.png">
   
   <style>
     :root {
@@ -77,6 +77,7 @@
       box-shadow: 0 15px 35px rgba(0,0,0,0.1);
       width: 100%;
       max-width: 400px;
+      box-sizing: border-box; /* FIX: Ensures padding is included in width */
     }
 
     .login-header {
@@ -86,7 +87,7 @@
 
     /* ===== MODIFICATION 1: Updated Logo ===== */
     .logo-image {
-      width: 100px; /* Adjust size as needed */
+      width: 100px;
       height: auto;
       margin: 0 auto 20px;
       display: block;
@@ -105,7 +106,7 @@
       line-height: 1.5;
     }
 
-    /* Form Styles */
+    /* Form Styles - FIXED WIDTH ISSUE */
     .form-group {
       margin-bottom: 24px;
     }
@@ -126,6 +127,7 @@
       font-size: 15px;
       background: white;
       transition: all 0.2s ease;
+      box-sizing: border-box; /* FIX: Critical fix for width calculation */
     }
 
     .form-control:focus {
@@ -145,7 +147,8 @@
       font-weight: 600;
       cursor: pointer;
       transition: all 0.2s ease;
-      margin-bottom: 15px;
+      margin-bottom: 15px; /* Added for FAQ link spacing */
+      box-sizing: border-box; /* FIX: Ensures proper width calculation */
     }
 
     .login-btn:hover {
@@ -292,10 +295,16 @@
     .faq-link:active {
       transform: translateY(0);
     }
-    
+
+    /* Responsive */
     @media (max-width: 600px) {
+      .login-container {
+        padding: 20px 15px;
+      }
+      
       .login-card {
         padding: 30px 20px;
+        max-width: 100%;
       }
       
       .login-header h1 {
@@ -311,6 +320,14 @@
         right: 15px;
         padding: 6px 12px;
         font-size: 12px;
+      }
+      
+      .form-control {
+        padding: 12px 14px;
+      }
+      
+      .login-btn {
+        padding: 12px;
       }
     }
   </style>
