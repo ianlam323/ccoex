@@ -145,6 +145,7 @@
       font-weight: 600;
       cursor: pointer;
       transition: all 0.2s ease;
+      margin-bottom: 15px;
     }
 
     .login-btn:hover {
@@ -156,6 +157,32 @@
       opacity: 0.6;
       cursor: not-allowed;
       transform: none;
+    }
+
+    /* FAQ Link Below Sign In Button - NEW ADDITION */
+    .faq-text-link {
+      text-align: center;
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+    
+    .faq-text-link a {
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.2s ease;
+    }
+    
+    .faq-text-link a:hover {
+      text-decoration: underline;
+      color: #1976d2;
+    }
+    
+    .faq-text-link .faq-icon {
+      font-size: 12px;
     }
 
     /* Error Message */
@@ -200,7 +227,7 @@
       100% { transform: rotate(360deg); }
     }
 
-    /* FAQ Link Button - NEW ADDITION */
+    /* FAQ Link Button - Floating Button */
     .faq-link {
       position: fixed;
       bottom: 20px;
@@ -312,11 +339,19 @@
         <button type="submit" class="login-btn" id="loginBtn">
           Sign In
         </button>
+        
+        <!-- FAQ Link Below Sign In Button - NEW ADDITION -->
+        <div class="faq-text-link">
+          <a href="faq.html">
+            <span class="faq-icon">❓</span>
+            Have questions? Visit our FAQ page for answers
+          </a>
+        </div>
       </form>
     </div>
   </div>
 
-  <!-- FAQ Link Button - NEW ADDITION -->
+  <!-- FAQ Link Button - Floating Button -->
   <a href="faq.html" class="faq-link">
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0;">
       <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
