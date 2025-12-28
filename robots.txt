@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /index.html
+Allow: /faq.html
+Allow: /$  # Allows the root (homepage)
+Disallow: /mock1.html
+Disallow: /mock2.html
+Disallow: /dashboard.html
+Disallow: /file/
+Disallow: /notes/
+
+Sitemap: https://ccoex.igchkshop.dpdns.org/sitemap.xml
