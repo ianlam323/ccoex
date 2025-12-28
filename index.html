@@ -5,19 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>IGC HK Exam | Login</title>
 
-<!-- ADD THESE TAGS FOR GOOGLE -->
-<meta name="description" content="Secure login for IGC HK Exam students. Access exclusive WJEC past papers, mock exams, and study resources by invitation only.">
-<meta name="keywords" content="IGC HK Exam, WJEC past papers, mock exams, A-Level revision, Hong Kong exams, secure login, study resources">
-<meta name="author" content="IGC HK Exam">
-<meta name="robots" content="index, follow"> <!-- Tells Google to list this page -->
-
-<!-- Open Graph tags for social media sharing -->
-<meta property="og:title" content="IGC HK Exam - WJEC Login">
-<meta property="og:description" content="Access exclusive exam resources for IGC HK Exam students.">
-<meta property="og:image" content="https://www2.igchkshop.dpdns.org/img/igchkexam.jpg">
-<meta property="og:url" content="https://ccoex.igchkshop.dpdns.org/index.html">
-<meta property="og:type" content="website">
+  <!-- ===== CRITICAL FIXES FOR GOOGLE PHISHING WARNING ===== -->
+  <!-- Security & SEO Meta Tags -->
+  <meta name="description" content="Secure login for IGC HK Exam students. Access exclusive WJEC past papers, mock exams, and study resources by invitation only.">
+  <meta name="keywords" content="IGC HK Exam, WJEC past papers, mock exams, A-Level revision, Hong Kong exams, secure login, study resources">
+  <meta name="author" content="IGC HK Exam">
+  <meta name="robots" content="index, follow">
   
+  <!-- Content Security Policy - FIXES PHISHING WARNING -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://www.gstatic.com https://ccoex.igchkshop.dpdns.org; script-src 'self' https://www.gstatic.com; style-src 'self' 'unsafe-inline'; img-src 'self' https://www2.igchkshop.dpdns.org; connect-src 'self' https://*.firebaseapp.com https://*.firebaseio.com;">
+  
+  <!-- Open Graph tags for social media sharing -->
+  <meta property="og:title" content="IGC HK Exam - WJEC Login">
+  <meta property="og:description" content="Access exclusive exam resources for IGC HK Exam students.">
+  <meta property="og:image" content="https://www2.igchkshop.dpdns.org/img/igchkexam.jpg">
+  <meta property="og:url" content="https://ccoex.igchkshop.dpdns.org/index.html">
+  <meta property="og:type" content="website">
+  
+  <!-- Favicons -->
   <link rel="icon" type="image/x-icon" href="https://www2.igchkshop.dpdns.org/img/igchkexam.jpg">
   <link rel="apple-touch-icon" href="https://www2.igchkshop.dpdns.org/img/igchkexam.png">
   
@@ -91,7 +96,7 @@
       box-shadow: 0 15px 35px rgba(0,0,0,0.1);
       width: 100%;
       max-width: 400px;
-      box-sizing: border-box; /* FIX: Ensures padding is included in width */
+      box-sizing: border-box;
     }
 
     .login-header {
@@ -99,7 +104,6 @@
       margin-bottom: 30px;
     }
 
-    /* ===== MODIFICATION 1: Updated Logo ===== */
     .logo-image {
       width: 100px;
       height: auto;
@@ -120,7 +124,7 @@
       line-height: 1.5;
     }
 
-    /* Form Styles - FIXED WIDTH ISSUE */
+    /* Form Styles - FIXED WITH NAME ATTRIBUTES */
     .form-group {
       margin-bottom: 24px;
     }
@@ -141,7 +145,7 @@
       font-size: 15px;
       background: white;
       transition: all 0.2s ease;
-      box-sizing: border-box; /* FIX: Critical fix for width calculation */
+      box-sizing: border-box;
     }
 
     .form-control:focus {
@@ -161,8 +165,8 @@
       font-weight: 600;
       cursor: pointer;
       transition: all 0.2s ease;
-      margin-bottom: 15px; /* Added for FAQ link spacing */
-      box-sizing: border-box; /* FIX: Ensures proper width calculation */
+      margin-bottom: 15px;
+      box-sizing: border-box;
     }
 
     .login-btn:hover {
@@ -176,7 +180,7 @@
       transform: none;
     }
 
-    /* FAQ Link Below Sign In Button - NEW ADDITION */
+    /* FAQ Link Below Sign In Button */
     .faq-text-link {
       text-align: center;
       margin-top: 10px;
@@ -244,7 +248,7 @@
       100% { transform: rotate(360deg); }
     }
 
-    /* Refresh Button (shows after 8 seconds) - NEW ADDITION */
+    /* Refresh Button */
     .refresh-button-container {
       display: none;
       text-align: center;
@@ -360,13 +364,8 @@
   <div class="login-container">
     <div class="login-card">
       <div class="login-header">
-        <!-- ===== MODIFICATION 1: Logo Image ===== -->
         <img src="https://www2.igchkshop.dpdns.org/img/igchkexam.jpg" alt="IGC HK Exam Logo" class="logo-image">
-        
-        <!-- ===== MODIFICATION 2: Updated Heading ===== -->
         <h1>Welcome to IGC HK Exam - WJEC</h1>
-        
-        <!-- ===== MODIFICATION 3: Updated Description ===== -->
         <p>Sign in to access exam resources. IGC HK Exam is only available by invitation only.</p>
       </div>
 
@@ -375,7 +374,7 @@
       <div id="loading" class="loading">
         <div class="spinner"></div>
         <p>Signing in...</p>
-        <!-- Refresh Button Container - NEW ADDITION -->
+        <!-- Refresh Button Container -->
         <div id="refreshButtonContainer" class="refresh-button-container">
           <button id="refreshButton" class="refresh-button">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -388,16 +387,18 @@
         </div>
       </div>
 
+      <!-- ===== FIXED FORM WITH NAME ATTRIBUTES ===== -->
       <form id="loginForm">
         <div class="form-group">
           <label for="email">Email Address</label>
           <input 
             type="email" 
             id="email" 
+            name="email"  <!-- CRITICAL: Added name attribute -->
             class="form-control" 
             placeholder="Enter your email" 
             required
-            autocomplete="username"
+            autocomplete="username email"  <!-- Fixed autocomplete -->
           >
         </div>
         
@@ -406,6 +407,7 @@
           <input 
             type="password" 
             id="password" 
+            name="password"  <!-- CRITICAL: Added name attribute -->
             class="form-control" 
             placeholder="Enter your password" 
             required
@@ -417,7 +419,7 @@
           Sign In
         </button>
         
-        <!-- FAQ Link Below Sign In Button - NEW ADDITION -->
+        <!-- FAQ Link Below Sign In Button -->
         <div class="faq-text-link">
           <a href="faq.html">
             <span class="faq-icon">❓</span>
@@ -466,8 +468,8 @@
     // Check if user is already logged in
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        // ===== MODIFICATION 4: Redirect to mock2 instead of mock1 =====
-        window.location.href = "mock2.html"; // Changed from mock1.html
+        // Redirect to mock2 instead of mock1
+        window.location.href = "mock2.html";
       }
     });
     
