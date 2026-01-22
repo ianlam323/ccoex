@@ -4,64 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Service Update | IGC HK Exam</title>
-  
-  <!-- ========== FIREBASE AUTHENTICATION (REQUIRED) ========== -->
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
-    import { 
-      getAuth, 
-      onAuthStateChanged,
-      signOut,
-      setPersistence,
-      browserLocalPersistence
-    } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
-
-    const firebaseConfig = {
-      apiKey: "AIzaSyDV-pbFNyXTS6LMuzvSKbZnGysPOrZldcc",
-      authDomain: "igc-hk.firebaseapp.com",
-      projectId: "igc-hk",
-      storageBucket: "igc-hk.firebasestorage.app",
-      messagingSenderId: "1021412241243",
-      appId: "1:1021412241243:web:f5cb650b2ad46fafa7f47e",
-      measurementId: "G-EYW84F5CSY"
-    };
-
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-
-    setPersistence(auth, browserLocalPersistence);
-
-    onAuthStateChanged(auth, (user) => {
-      if (!user) {
-        window.location.replace("index.html");
-      } else {
-        const authOverlay = document.getElementById('auth-overlay');
-        if (authOverlay) authOverlay.style.display = 'none';
-        document.body.classList.add('authenticated');
-        updateNavbarWithUser(user.email);
-      }
-    });
-
-    function updateNavbarWithUser(email) {
-      const navbar = document.querySelector('.navbar');
-      if (navbar && !document.querySelector('.user-info')) {
-        const userDiv = document.createElement('div');
-        userDiv.className = 'user-info';
-        userDiv.innerHTML = `
-          <span style="color:#666;font-size:14px;margin-right:10px;">${email}</span>
-          <button onclick="logout()" style="
-            background:#ff5722;color:white;border:none;
-            padding:6px 12px;border-radius:5px;
-            font-size:12px;cursor:pointer;">Logout</button>
-        `;
-        navbar.appendChild(userDiv);
-      }
-    }
-
-    window.logout = async function() {
-      await signOut(auth);
-    };
-  </script>
 
   <style>
     #auth-overlay {
