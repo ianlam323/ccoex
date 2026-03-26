@@ -39,6 +39,7 @@
       position: sticky;
       top: 0;
       z-index: 1000;
+      box-sizing: border-box;
     }
 
     .nav-logo {
@@ -59,31 +60,11 @@
       color: #333;
     }
 
-    /* NEW NAV BUTTONS */
-    .nav-buttons {
-      display: flex;
-      gap: 10px;
-    }
-
-    .nav-buttons a {
-      text-decoration: none;
-      background: var(--accent);
-      color: white;
-      padding: 6px 12px;
-      border-radius: 8px;
-      font-size: 12px;
-      font-weight: 600;
-      transition: 0.2s;
-    }
-
-    .nav-buttons a:hover {
-      opacity: 0.8;
-    }
-
     .container {
       max-width: 1200px;
       margin: 0 auto;
       padding: 28px;
+      box-sizing: border-box;
     }
 
     .wrap {
@@ -92,6 +73,7 @@
       border-radius: 16px;
       border: 1px solid rgba(255,255,255,0.5);
       box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      box-sizing: border-box;
     }
 
     header {
@@ -121,13 +103,12 @@
     }
 
     .announcement {
-      margin-top: 15px;
-      padding: 12px;
       background: #fff3cd;
       border-left: 4px solid #ff9800;
-      border-radius: 8px;
-      font-size: 13px;
-      line-height: 1.5;
+      padding: 16px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      font-size: 14px;
     }
 
     .grid {
@@ -141,6 +122,8 @@
       padding: 20px;
       border-radius: 12px;
       border: 1px solid rgba(0,0,0,0.05);
+      width: 100%;
+      box-sizing: border-box;
     }
 
     .subject-header {
@@ -171,11 +154,13 @@
       display: flex;
       flex-direction: column;
       gap: 12px;
+      width: 100%;
     }
 
     .links a {
       display: block;
-      padding: 12px;
+      width: 100%;
+      padding: 12px 14px;
       text-decoration: none;
       background: white;
       border-radius: 10px;
@@ -184,7 +169,8 @@
       font-size: 13px;
       font-weight: 600;
       text-align: center;
-      transition: 0.2s;
+      box-sizing: border-box;
+      transition: all 0.2s ease;
     }
 
     .links a:hover {
@@ -193,8 +179,37 @@
     }
 
     .links p {
+      margin: 8px 0 0;
       font-size: 12px;
       color: var(--muted);
+      line-height: 1.4;
+    }
+
+    .bottom-nav {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 16px;
+      z-index: 1000;
+    }
+
+    .bottom-nav a {
+      background: var(--accent);
+      color: white;
+      padding: 12px 18px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+      transition: 0.2s;
+    }
+
+    .bottom-nav a:hover {
+      opacity: 0.85;
+      transform: translateY(-2px);
     }
 
     @media (max-width: 900px) {
@@ -214,12 +229,6 @@
       <img src="https://www2.igchkshop.dpdns.org/img/igchkexam.jpg">
       <span class="nav-title">IGC HK Exam</span>
     </a>
-
-    <!-- NEW BUTTONS -->
-    <div class="nav-buttons">
-      <a href="mock1.html">Mock 1</a>
-      <a href="mock2.html">Mock 2</a>
-    </div>
   </nav>
 
   <div class="container">
@@ -233,24 +242,90 @@
         </div>
       </header>
 
+      <!-- ANNOUNCEMENT -->
+      <div class="announcement">
+        IGC HK Exam respects everyone's right to use our materials for exam preparation. 
+        However, any form of resale of IGC HK Exam materials is strictly prohibited. 
+        We hope you enjoy your experience with IGC HK Exam. Thank you.
+      </div>
+
       <section class="instructions">
         <h2>Instructions</h2>
         <p>
-          Welcome to IGC HK Exam. This is a self-made paper tailored to Mock 3 content. Unit 5 Physics Practical and Mock 3 content are available.
+          Welcome to IGC HK Exam, this is a self-made paper which is tailored to Mock 3 content. Unit 5 Physics Practical and Mock 3 content are availiable.
         </p>
-
-        <div class="announcement">
-          <strong>Announcement:</strong><br>
-          IGC HK Exam respects everyone's right to use our materials for exam preparation. However, any form of resale of IGC HK Exam materials is strictly prohibited. We hope you enjoy your experience with IGC HK Exam. Thank you.
-        </div>
       </section>
 
-      <!-- REST OF YOUR GRID UNCHANGED -->
       <section class="grid">
-        <!-- (kept exactly same as your original) -->
-      </section>
 
+        <!-- Physics U5-->
+        <article class="subject-card">
+          <div class="subject-header">
+            <div class="subject-icon u5-icon">U5</div>
+            <h2>Phy U5</h2>
+          </div>
+          <div class="links">
+            <a href="https://ccoex.igchkshop.dpdns.org/mock3/igchk-phy-u5.pdf" target="_blank">IGC HK Exam U5 Condense Note</a>
+            <p>IGC HK Exam Prediction is a self made document, it is not an official WJEC document.</p>
+          </div>
+        </article>
+
+        <!-- Physics -->
+        <article class="subject-card">
+          <div class="subject-header">
+            <div class="subject-icon physics-icon">P</div>
+            <h2>Physics</h2>
+          </div>
+          <div class="links">
+            <a href="https://ccoex.igchkshop.dpdns.org/mock3/s25-physics-igchk-qp.pdf" target="_blank">IGC HK Exam Paper – Physics (QP)</a>
+            <p>Note: This is an incomplete paper. However, all of the provided content are accurate.</p>
+          </div>
+        </article>
+
+        <!-- Chemistry -->
+        <article class="subject-card">
+          <div class="subject-header">
+            <div class="subject-icon chemistry-icon">C</div>
+            <h2>Chemistry</h2>
+          </div>
+          <div class="links">
+            <a href="https://ccoex.igchkshop.dpdns.org/mock3/s25-chemistry-igchk-qp.pdf" target="_blank">IGC HK Exam Paper – Chemistry (QP)</a>
+            <a href="https://drive.google.com/file/d/1GOWorjFXJnNwiL5VA-cvR_p5vtDiHI_o/" target="_blank">IGC HK Exam U4 Condense Note</a>
+            <p>This is a prediction paper.</p>
+          </div>
+        </article>
+
+        <!-- Biology -->
+        <article class="subject-card">
+          <div class="subject-header">
+            <div class="subject-icon biology-icon">B</div>
+            <h2>Biology</h2>
+          </div>
+          <div class="links">
+            <a href="https://ccoex.igchkshop.dpdns.org/mock3/s25-biology-igchk-qp.pdf" target="_blank">IGC HK Exam Paper – Biology (QP)</a>
+            <a href="https://drive.google.com/file/d/13g6mql8RJlBINNHMCFwHU1rXbvFzRw0_/" target="_blank">IGC HK Exam Notes U4 Incomplete</a>
+          </div>
+        </article>
+
+        <!-- Maths -->
+        <article class="subject-card">
+          <div class="subject-header">
+            <div class="subject-icon maths-icon">M</div>
+            <h2>Maths</h2>
+          </div>
+          <div class="links">
+            <a href="https://ccoex.igchkshop.dpdns.org/mock3/s25-maths-igchk-qp.pdf" target="_blank">IGC HK Exam Paper – Maths (QP)</a>
+          </div>
+        </article>
+
+      </section>
     </div>
+  </div>
+
+  <!-- BOTTOM NAV -->
+  <div class="bottom-nav">
+    <a href="mock1.html">← Mock 1</a>
+    <a href="mock2.html">Mock 2 →</a>
   </div>
 
 </body>
