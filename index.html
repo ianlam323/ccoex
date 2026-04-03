@@ -58,8 +58,22 @@
       text-align: center;
     }
 
-    h1 {
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
       margin-bottom: 10px;
+    }
+
+    .main-logo {
+      width: 50px;
+      height: 50px;
+      border-radius: 8px;
+    }
+
+    h1 {
+      margin: 0;
     }
 
     p {
@@ -103,7 +117,11 @@
   <div class="container">
     <div class="wrap">
 
-      <h1>Welcome to IGC HK Exam</h1>
+      <header>
+        <img src="https://www2.igchkshop.dpdns.org/file/igchkexam.jpg" class="main-logo">
+        <h1>Welcome to IGC HK Exam</h1>
+      </header>
+
       <p>Select a mock paper below to begin your revision.</p>
 
       <div class="buttons">
