@@ -102,6 +102,15 @@
       transform: translateY(-2px);
       box-shadow: 0 6px 16px rgba(0,0,0,0.12);
     }
+    
+    /* Style for the last updated section */
+    .update-info {
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(0,0,0,0.1);
+      font-size: 14px;
+      color: #666;
+    }
   </style>
 </head>
 
@@ -109,7 +118,7 @@
 
   <nav class="navbar">
     <a href="#" class="nav-logo">
-      <img src="https://www2.igchkshop.dpdns.org/img/igchkexam.jpg">
+      <img src="https://www2.igchkshop.dpdns.org/img/igchkexam.jpg" alt="Logo">
       <span>IGC HK Exam</span>
     </a>
   </nav>
@@ -118,7 +127,7 @@
     <div class="wrap">
 
       <header>
-        <img src="https://www2.igchkshop.dpdns.org/img/igchkexam.jpg" class="main-logo">
+        <img src="https://www2.igchkshop.dpdns.org/img/igchkexam.jpg" class="main-logo" alt="Main Logo">
         <h1>Welcome to IGC HK Exam</h1>
       </header>
 
@@ -138,8 +147,54 @@
            - For Biology: href="https://ccoex.igchkshop.dpdns.org/u5bio"
            Example: <a href="https://ccoex.igchkshop.dpdns.org/u5chem">Unit 5 Chemistry</a> -->
 
+      <!-- Display latest update time from GitHub -->
+      <div class="update-info">
+        <p>📅 Last updated: <span id="last-update">Loading...</span></p>
+      </div>
+
     </div>
   </div>
+
+  <script>
+    // Fetch the latest commit date from GitHub API
+    async function getLastUpdateTime() {
+      try {
+        const response = await fetch('https://api.github.com/repos/ianlam323/ccoex/commits?per_page=1');
+        const commits = await response.json();
+        
+        if (commits && commits[0] && commits[0].commit) {
+          const lastUpdate = new Date(commits[0].commit.committer.date);
+          
+          // Format the date nicely
+          const formattedDate = lastUpdate.toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+          });
+          
+          const formattedTime = lastUpdate.toLocaleTimeString('en-US', {
+            hour: '2-digit',
+            minute: '2-digit'
+          });
+          
+          document.getElementById('last-update').innerHTML = `${formattedDate} at ${formattedTime}`;
+          
+          // Also add the commit message as a tooltip
+          const commitMsg = commits[0].commit.message;
+          document.getElementById('last-update').parentElement.title = `Latest commit: ${commitMsg}`;
+        } else {
+          document.getElementById('last-update').innerHTML = 'April 7, 2026';
+        }
+      } catch (error) {
+        // Fallback to manual date if API fails
+        document.getElementById('last-update').innerHTML = 'April 7, 2026';
+        console.log('Could not fetch GitHub data:', error);
+      }
+    }
+    
+    // Call the function when page loads
+    getLastUpdateTime();
+  </script>
 
 </body>
 </html>
